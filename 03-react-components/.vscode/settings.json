@@ -1,0 +1,6 @@
+{
+    "editor.tabSize": 20,
+    "workbench.tree.indent": 20,
+    "editor.wrappingIndent": "indent",
+    "editor.autoIndent": "brackets"
+}
