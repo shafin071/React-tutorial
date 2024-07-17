@@ -4,7 +4,8 @@ import { useState, useRef } from 'react';
 
 export default function Player() {
         // Refs are objects which is similar to a DOM selector in jQuery
-        // It can simplify use cases where we need to save an input value to a state OR manipulate DOM
+        // It can simplify use cases where we need to save an input value to a state OR manipulate DOM 
+        // WITHOUT re-rendering the component
         // It removes the need for a seperate state that tracks the submission state of the submit button
         // WARNING: only use Refs for simple scenarios like getting/clearing input value.
         //                   We should always let react state handle DOM interactions
