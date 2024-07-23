@@ -6,13 +6,13 @@ const TIMER = 3000;
 
 
 export default function DeleteConfirmation({ onConfirm, onCancel }) {
-        console.log("DeleteConfirmation executing")
+        // console.log("DeleteConfirmation executing")
 
         // This feature is added to demonstrate example for useEffect. When we delete a place, this modal will pop-up
         // Then after 3 seconds we want the modal to close and the place to get deleted via onConfirm func.
         // useEffect can help clean up the timer after the modal has closed.
         useEffect(() => {
-                console.log('TIMER SET');
+                // console.log('TIMER SET');
                 const timer = setTimeout(() => {
                         onConfirm();
                 }, TIMER);
@@ -21,7 +21,7 @@ export default function DeleteConfirmation({ onConfirm, onCancel }) {
                 // So it'll act as the cleanup func and clear the timer before the modal is removed from the DOM.
                 // This prevents the deletion of the place when we click No on the modal
                 return () => {
-                        console.log('Cleaning up timer');
+                        // console.log('Cleaning up timer');
                         clearTimeout(timer);
                 };
         }, [onConfirm]);

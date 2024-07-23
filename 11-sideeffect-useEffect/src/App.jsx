@@ -24,6 +24,8 @@ function App() {
         const [availablePlaces, setAvailablePlaces] = useState([]); // this state will hold the sorted places
         const [pickedPlaces, setPickedPlaces] = useState(storedPlaces);
 
+        console.log("executing App...");
+
         // This code block takes the user's location using JS built-in navigator.geolocation and passes it to sortPlacesByDistance
         // to sort the places according it to user's location
         // This functionality is a side effect because it's not directly related to rendering the App component.
@@ -36,6 +38,7 @@ function App() {
                 // because when the browser loads the component, you get a prompt to allow browser to get your location
                 // Once you allow, then the arrow func is executed
                 navigator.geolocation.getCurrentPosition((position) => {
+                        console.log("running useEffect....")
                         const sortedPlaces = sortPlacesByDistance(
                                 AVAILABLE_PLACES,
                                 position.coords.latitude,
@@ -50,7 +53,9 @@ function App() {
         // This can set off an infinite loop. This is where the dependency comes in. 
         // useEffect will only execute its effect function again if the dependency value has changed.
         // In this case, the dependency is an empty array that is not tied to any state or object, so it will never change
-        // Thus we make sure the useEffect function will only be executed once.
+        // Thus we make sure the useEffect function will only be executed once. 
+        // This means, useEffect will only run once when
+        // the page is refreshed, however when the App re-executes due to change of state, useEffect will not run again.
 
 
         function handleStartRemovePlace(id) {
@@ -91,7 +96,7 @@ function App() {
         // useCallback will only re-create the func if the dependency value has changed
         // But since we have an empty array, nothing will change, so the function will not be re-created
         const handleRemovePlace = useCallback(function handleRemovePlace() {
-                console.log("running handleRemovePlace useCallback");
+                // console.log("running handleRemovePlace useCallback");
                 setPickedPlaces((prevPickedPlaces) =>
                   prevPickedPlaces.filter((place) => place.id !== selectedPlace.current)
                 );
@@ -104,7 +109,7 @@ function App() {
                 );
               }, []);
 
-        console.log("modalIsOpen: ", modalIsOpen)
+        // console.log("modalIsOpen: ", modalIsOpen)
 
         return (
                 <>

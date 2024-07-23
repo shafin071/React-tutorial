@@ -6,6 +6,7 @@ export default function Cart() {
         // by { items } we are destructuring the object in CartContext. It'll only return the items array
         // NOTE: a component will be re-executed if there is a change in context
         const { items, updateItemQuantity } = useContext(CartContext);
+        console.log('items in Cart: ', items)
 
 
         // reduce executes a function for array element and returns the accumulated result

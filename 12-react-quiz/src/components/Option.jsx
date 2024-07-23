@@ -1,39 +1,32 @@
-import { forwardRef, useImperativeHandle, useRef } from 'react';
+import { useContext, useRef } from 'react';
+import { QuizContext } from '../store/quiz-context';
 
 
-export default function Option({ opt, onSelect, answerSelected }) {
+export default function Option({ opt, questionID }) {
+        const { answerSelected, answerCorrect, updateUserSelectOption } = useContext(QuizContext);
         const btnRef = useRef();
         const [key, val] = Object.entries(opt)[0]
-        // console.log(key, val);
+
+        let btnClass = null;
+        if (answerSelected === key) {
+                btnClass = 'selected';
+                // if answer has been evaludated, then highlight the option green or red
+                if (answerCorrect !== null) {
+                        btnClass = (answerCorrect) ? 'correct' : 'wrong';
+                }
+        }
+
+        let btnDisabled = (answerSelected !== null)
 
         function handleSelect() {
-                btnRef.current.className='selected';
-                onSelect();
+                updateUserSelectOption(btnRef.current.id);
         }
-        // console.log(answerSelected);
-        // const btnClassName = answerSelected ? '' : 'selected';
 
         return (
                 <li key={key} className='answer'>
-                        <button ref={btnRef} onClick={handleSelect} className='' disabled={answerSelected}>
+                        <button ref={btnRef} id={key} onClick={handleSelect} className={btnClass} disabled={btnDisabled}>
                                 {val}
                         </button>
                 </li>
         )
 }
-
-// const Option = forwardRef(function Option({ opt, handleSelect }, ref) {
-//         const btnRef = useRef();
-//         console.log(opt)
-//         const [key, val] = Object.entries(opt)[0]
-//         console.log(key, val);
-//         return (
-//                 <li key={key} className='answer'>
-//                         <button ref={btnRef} onClick={handleSelect} className=''>
-//                                 {val}
-//                         </button>
-//                 </li>
-//         )
-// });
-
-// export default Option;

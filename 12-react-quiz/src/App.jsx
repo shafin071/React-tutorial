@@ -1,26 +1,17 @@
-import { useRef, useState, useEffect, useCallback } from 'react';
+import Header from './components/Header.jsx';
+import Quiz from './components/Quiz.jsx';
+import QuizContextProvider from './store/quiz-context.jsx';
 
-import QUESTIONBANK from "./question";
-import Question from "./components/Question.jsx";
-
-
-// Store question IDs in a const
-// const QuestionBank = 
-
-const userResponse = {
-        correct: 0,
-        skipped: 0,
-        incorrect: 0
-}
 
 function App() {
-        const [currentQuestion, setCurrentQuestion] = useState(0);
-        const [response, setResponse] = useState(userResponse);
-
         return (
-                <Question q={QUESTIONBANK[currentQuestion]} />
+                <>
+                        <QuizContextProvider>
+                                <Header />
+                                <Quiz />
+                        </QuizContextProvider>
+                </>
         )
-
 }
 
 export default App;

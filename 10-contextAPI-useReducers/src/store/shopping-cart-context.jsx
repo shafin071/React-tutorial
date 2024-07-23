@@ -43,6 +43,9 @@ function shoppingCartReducer(state, action) {
                         });
                 }
 
+                console.log("...state: ", state)
+                console.log("updatedItems: ", updatedItems)
+
                 return {
                         ...state, // not needed here because we have only one value
                         items: updatedItems,
@@ -114,6 +117,8 @@ export default function CartContextProvider({ children }) {
                         }
                 });
         }
+
+        console.log("shoppingCartState in CartContextProvider: ", shoppingCartState);
 
         const ctxValue = {
                 items: shoppingCartState.items,
