@@ -1,0 +1,9 @@
+add components for displaying products, cart (in a modal) and a checkout form (in a modal)
+
+Fetch dummy data from backend and show it on the screen (GET /meals)
+
+Allow users to add and remove products to/from the cart
+
+Send cart data along user data (full name, email, address, street, postakl code, city) to the backend (POST /orders)
+
+Handle loading & error states

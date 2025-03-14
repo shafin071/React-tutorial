@@ -1,0 +1,42 @@
+I couldn't follow along with the hands-on coding for this section.
+
+The starting project is written in an older version of React. It also didn't have Redux, React-Router installed.
+
+I installed them and tried to make the syntax changes in the code to get the project run error free but there's still errors.
+
+It may take a lot more effort to transform this project, hence I'm aborting the code-along.
+
+Here are my notes for the chapter:
+
+- This chapter covers 2 alternative approaches of redux.
+
+
+Approach 1: using ContextAPI
+We've seen this one in action in the contextAPI-useReducers chapter.
+This approach is suitable when you have a small project with simple state management where the state updates less frequently. 
+Adding redux will make the size (memory wise) of the project bigger and you'll have to ship out a lot more code
+(factory code of the react packages), thus redux adds more overhead to a project. 
+
+Cons:
+ContextAPI is not suitable for managing more complex state across a bigger project. 
+It's not as advanced as redux when updating the state. 
+The way the react context API works is such that whenever something changes in your context
+it has no way of cleverly figuring out which component that uses this context really is concerned
+and which component is not. Which means that every component that uses use context
+will rebuild, will re-render when you switch something in that context. No matter if it's directly effected or not.
+
+
+Approach 2: Custom hook as store
+This is a new pattern explored first in this chapter but it uses similar concepts 
+like useState, useEffect and useMemo to build a custom store with state and dispatch (similar to redux).
+So its less overhead as there is no 3rd party dependency like redux needed.
+This approach is suitable for managing complex state across a larger project.
+If you don't want to write your own custom store then there is a npm package out there
+that has this custom hook written with the same react hooks. It has less overhead than Redux.
+https://www.npmjs.com/package/use-global-hook
+
+Cons:
+Its not Redux. Redux is the more robust compared to your own custom store. 
+
+
+

@@ -2,7 +2,7 @@ import { forwardRef, useImperativeHandle, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
 
-// If we want to pass ref from one component to anorther, we must wrap the component with forwardRef
+// If we want to pass ref from one component to another, we must wrap the component with forwardRef
 const ResultModal = forwardRef(function ResultModal({ result, targetTime, remainingTime, onReset }, ref) {
         const dialog = useRef();
 
